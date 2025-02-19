@@ -1,0 +1,9 @@
+[package]
+name = "cake-pattern-di"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+common = { path = "../common" }
+anyhow = "1.0.86"
+log = "0.4.22"
