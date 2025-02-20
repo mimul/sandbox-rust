@@ -29,6 +29,6 @@ impl ProvidesService for CakeModule {
 }
 
 fn main() {
-    let user = CakeModule::new().user_service().find_user("test".to_string()).unwrap().unwrap();
-    assert_eq!(user.id, "cake_pattern_id_1".to_string());
+    let user = CakeModule::new().user_service().find_user("cake_id_1".to_string()).unwrap().unwrap();
+    assert_eq!(user.id, "cake_id_1".to_string());
 }

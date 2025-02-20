@@ -9,7 +9,7 @@ pub trait Repository {}
 impl<Repository> UserRepository for Repository {
     fn find_user(&self, id: String) -> Result<Option<User>> {
         Ok(Some(User {
-            id: "cake_pattern_id_1".to_string(),
+            id: "cake_id_1".to_string(),
             status: true,
         }))
     }

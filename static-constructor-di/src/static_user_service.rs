@@ -25,7 +25,7 @@ mod tests {
     #[test]
     fn test_static_find_user() {
         let user_service = UserService::new(UserRepositoryImpl::new());
-        let user = user_service.user_repository.find_user(String::from("test")).unwrap().unwrap();
+        let user = user_service.user_repository.find_user(String::from("static_id_1")).unwrap().unwrap();
         info!("user.id={:?}", user.id);
         assert_eq!(user.id, "static_id_1".to_string());
     }

@@ -27,7 +27,7 @@ mod tests {
     #[test]
     fn test_dynamic_find_user() {
         let user_service = UserService::new(Arc::new(UserRepositoryImpl::new()));
-        let user = user_service.user_repository.find_user(String::from("test")).unwrap().unwrap();
+        let user = user_service.user_repository.find_user(String::from("dynamic_id_1")).unwrap().unwrap();
         info!("user.id={:?}", user.id);
         assert_eq!(user.id, "dynamic_id_1".to_string());
     }

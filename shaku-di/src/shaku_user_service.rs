@@ -38,7 +38,7 @@ mod tests {
     fn test_shaku_find_user() {
         let module = AppModule::builder().build();
         let user_service: Arc<dyn UserService> = module.resolve();
-        let user = user_service.find_user(String::from("test")).unwrap().unwrap();
+        let user = user_service.find_user(String::from("shaku_id_1")).unwrap().unwrap();
         assert_eq!(user.id, "shaku_id_1".to_string());
     }
 }
