@@ -1,4 +1,3 @@
-use log::info;
 use cake_pattern_di::cake_user_repository::{ProvidesRepository, Repository};
 use cake_pattern_di::cake_user_service::{ProvidesService, Service, UsesService};
 
