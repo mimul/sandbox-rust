@@ -1,7 +1,7 @@
 use std::sync::Arc;
 use common::user::User;
 use anyhow::Result;
-use crate::dynamic_user_repository::UserRepository;
+use crate::dynamic_user_repository::{UserRepository, UserRepositoryImpl};
 
 pub struct UserService {
     user_repository: Arc<dyn UserRepository>,
@@ -14,6 +14,22 @@ impl UserService {
 
     pub fn find_user(&self, id: String) -> Result<Option<User>> {
         self.user_repository.find_user(id)
+    }
+}
+
+pub struct AppModule {
+    user_service: UserService,
+}
+
+impl AppModule {
+    pub fn new() -> AppModule {
+        let user_service = UserService::new(Arc::new(UserRepositoryImpl::new()));
+
+        AppModule { user_service }
+    }
+
+    pub fn user_service(&self) -> &UserService {
+        &self.user_service
     }
 }
 

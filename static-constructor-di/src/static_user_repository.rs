@@ -1,7 +1,7 @@
 use common::user::User;
 use anyhow::Result;
 
-pub trait UserRepository: Send + Sync {
+pub trait UserRepository: Send + Sync + 'static {
     fn find_user(&self, id: String) -> Result<Option<User>>;
 }
 

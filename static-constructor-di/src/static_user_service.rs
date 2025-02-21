@@ -1,4 +1,4 @@
-use crate::static_user_repository::UserRepository;
+use crate::static_user_repository::{UserRepository, UserRepositoryImpl};
 use anyhow::Result;
 use common::user::User;
 
@@ -13,6 +13,22 @@ impl<T: UserRepository> UserService<T> {
 
     pub fn find_user(&self, id: String) -> Result<Option<User>> {
         self.user_repository.find_user(id)
+    }
+}
+
+pub struct AppModule {
+    user_service: UserService<UserRepositoryImpl>,
+}
+
+impl AppModule {
+    pub fn new() -> AppModule {
+        let user_service = UserService::new(UserRepositoryImpl::new());
+
+        AppModule { user_service }
+    }
+
+    pub fn user_service(&self) -> &UserService<UserRepositoryImpl> {
+        &self.user_service
     }
 }
 

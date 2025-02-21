@@ -1,8 +1,8 @@
 use common::user::User;
-use crate::cake_user_repository::{ProvidesRepository, UserRepository};
+use crate::cake_user_repository::{ProvidesRepository, UsesRepository};
 use anyhow::Result;
 
-pub trait UsesService {
+pub trait UsesService: Send + Sync + 'static {
     fn find_user(&self, id: String) -> Result<Option<User>>;
 }
 
@@ -14,7 +14,7 @@ impl<T: Service> UsesService for T {
     }
 }
 
-pub trait ProvidesService {
+pub trait ProvidesService: Send + Sync + 'static {
     type T: UsesService;
     fn user_service(&self) -> &Self::T;
 }

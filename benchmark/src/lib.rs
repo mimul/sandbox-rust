@@ -1,0 +1,1 @@
+pub mod static_vs_dynamic_di;
